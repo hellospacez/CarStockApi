@@ -10,7 +10,7 @@ namespace CarStockApi.Endpoints;
 
 
 
-public class SearchCarsEndpoint : Endpoint<SearchCarsRequest, List<CarRecord>>
+public class SearchCarsEndpoint : Endpoint<SearchCarsRequestModel, List<CarRecordModel>>
 {
     private readonly ICarService _carService;
 
@@ -25,7 +25,7 @@ public class SearchCarsEndpoint : Endpoint<SearchCarsRequest, List<CarRecord>>
         Claims("DealerId"); 
     }
 
-    public override async Task HandleAsync(SearchCarsRequest req, CancellationToken ct)
+    public override async Task HandleAsync(SearchCarsRequestModel req, CancellationToken ct)
     {
         var dealerId = int.Parse(User.FindFirst("DealerId")!.Value);
 

@@ -11,7 +11,7 @@ namespace CarStockApi.Auth.Services;
 
 public class AuthService : IAuthService
 {
-    public async Task RegisterAsync(RegisterRequest req)
+    public async Task RegisterAsync(RegisterRequestModel req)
     {
         using var conn = new SqliteConnection(Database.ConnectionString);
 
@@ -27,7 +27,7 @@ public class AuthService : IAuthService
         }
     }
 
-    public async Task<LoginResponse> LoginAsync(LoginRequest req)
+    public async Task<LoginResponseModel> LoginAsync(LoginRequestModel req)
     {
         using var conn = new SqliteConnection(Database.ConnectionString);
 
@@ -51,6 +51,6 @@ public class AuthService : IAuthService
             signingStyle: TokenSigningStyle.Symmetric
         );
 
-        return new LoginResponse { Token = token };
+        return new LoginResponseModel { Token = token };
     }
 }

@@ -7,7 +7,7 @@ using FastEndpoints;
 namespace CarStockApi.Auth;
 
 
-public class Login : Endpoint<LoginRequest, LoginResponse>
+public class Login : Endpoint<LoginRequestModel, LoginResponseModel>
 {
     private readonly IAuthService _authService;
 
@@ -22,7 +22,7 @@ public class Login : Endpoint<LoginRequest, LoginResponse>
         AllowAnonymous();
     }
 
-    public override async Task<LoginResponse> ExecuteAsync(LoginRequest req, CancellationToken ct)
+    public override async Task<LoginResponseModel> ExecuteAsync(LoginRequestModel req, CancellationToken ct)
     {
         try
         {

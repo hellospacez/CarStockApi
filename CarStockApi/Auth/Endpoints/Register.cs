@@ -7,7 +7,7 @@ namespace CarStockApi.Auth;
 
 
 
-public class Register : Endpoint<RegisterRequest>
+public class Register : Endpoint<RegisterRequestModel>
 {
     private readonly IAuthService _authService;
 
@@ -22,7 +22,7 @@ public class Register : Endpoint<RegisterRequest>
         AllowAnonymous();
     }
 
-    public override async Task HandleAsync(RegisterRequest req, CancellationToken ct)
+    public override async Task HandleAsync(RegisterRequestModel req, CancellationToken ct)
     {
         try
         {

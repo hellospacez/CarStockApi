@@ -1,7 +1,6 @@
-namespace CarStockApi.Models.Response.Car;
+namespace CarStockApi.Models.Request.Car;
 
-public partial class CarRecord {
-    public int Id { get; set; }
+public class AddCarRequestModel {
     public string Make { get; set; }
     public string Model { get; set; }
     public int Year { get; set; }

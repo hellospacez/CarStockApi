@@ -4,7 +4,7 @@ using FastEndpoints;
 
 namespace CarStockApi.Endpoints;
 
-public class AddCarEndpoint : Endpoint<AddCarRequest>
+public class AddCarEndpoint : Endpoint<AddCarRequestModel>
 {
     private readonly ICarService _carService;
 
@@ -19,7 +19,7 @@ public class AddCarEndpoint : Endpoint<AddCarRequest>
         Claims("DealerId");
     }
 
-    public override async Task HandleAsync(AddCarRequest req, CancellationToken ct)
+    public override async Task HandleAsync(AddCarRequestModel req, CancellationToken ct)
     {
         var dealerId = int.Parse(User.FindFirst("DealerId")!.Value);
         await _carService.AddCarAsync(dealerId, req);

@@ -1,6 +1,6 @@
 namespace CarStockApi.Models.Request.Car;
 
-public class SearchCarsRequest
+public class SearchCarsRequestModel
 {
     public string? Make { get; set; }
     public string? Model { get; set; }

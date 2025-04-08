@@ -6,7 +6,7 @@ using FastEndpoints;
 namespace CarStockApi.Endpoints;
 
 
-public class UpdateCarStockEndpoint : Endpoint<UpdateStockRequest>
+public class UpdateCarStockEndpoint : Endpoint<UpdateStockRequestModel>
 {
     private readonly ICarService _carService;
 
@@ -21,7 +21,7 @@ public class UpdateCarStockEndpoint : Endpoint<UpdateStockRequest>
         Claims("DealerId");
     }
 
-    public override async Task HandleAsync(UpdateStockRequest req, CancellationToken ct)
+    public override async Task HandleAsync(UpdateStockRequestModel req, CancellationToken ct)
     {
         var dealerId = int.Parse(User.FindFirst("DealerId")!.Value);
         var carId = Route<int>("id");

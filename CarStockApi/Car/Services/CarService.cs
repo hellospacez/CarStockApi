@@ -9,7 +9,7 @@ namespace CarStockApi.Endpoints.Car.Services;
 
 public class CarService : ICarService
 {
-    public async Task AddCarAsync(int dealerId, AddCarRequest request)
+    public async Task AddCarAsync(int dealerId, AddCarRequestModel requestModel)
     {
         using var conn = new SqliteConnection(Database.ConnectionString);
 
@@ -17,27 +17,27 @@ public class CarService : ICarService
             "INSERT INTO Cars (Make, Model, Year, Stock, DealerId) VALUES (@Make, @Model, @Year, @Stock, @DealerId)",
             new
             {
-                request.Make,
-                request.Model,
-                request.Year,
-                request.Stock,
+                requestModel.Make,
+                requestModel.Model,
+                requestModel.Year,
+                requestModel.Stock,
                 DealerId = dealerId
             });
     }
     
     
-    public async Task<List<CarRecord>> GetCarsAsync(int dealerId)
+    public async Task<List<CarRecordModel>> GetCarsAsync(int dealerId)
     {
         using var conn = new SqliteConnection(Database.ConnectionString);
 
-        var cars = await conn.QueryAsync<CarRecord>(
+        var cars = await conn.QueryAsync<CarRecordModel>(
             "SELECT Id, Make, Model, Year, Stock FROM Cars WHERE DealerId = @DealerId",
             new { DealerId = dealerId });
 
         return cars.ToList();
     }
     
-    public async Task<List<CarRecord>> SearchCarsAsync(int dealerId, string? make, string? model)
+    public async Task<List<CarRecordModel>> SearchCarsAsync(int dealerId, string? make, string? model)
     {
         using var conn = new SqliteConnection(Database.ConnectionString);
 
@@ -49,7 +49,7 @@ public class CarService : ICarService
                     AND (@Model IS NULL OR Model LIKE '%' || @Model || '%')
                   """;
 
-        var cars = await conn.QueryAsync<CarRecord>(sql, new
+        var cars = await conn.QueryAsync<CarRecordModel>(sql, new
         {
             DealerId = dealerId,
             Make = make,
@@ -78,5 +78,18 @@ public class CarService : ICarService
         return true;
     }
 
-    
+    public async Task<bool> DeleteCarAsync(int dealerId, int carId)
+    {
+        using var conn = new SqliteConnection(Database.ConnectionString);
+        var checkQuery = "SELECT COUNT(*) FROM Cars WHERE Id = @Id AND DealerId = @DealerId";
+        var exists = await conn.ExecuteScalarAsync<int>(checkQuery, new { Id = carId, DealerId = dealerId });
+
+        if (exists == 0)
+            return false;
+
+        var deleteQuery = "DELETE FROM Cars WHERE Id = @Id";
+        await conn.ExecuteAsync(deleteQuery, new { Id = carId });
+        return true;
+    }
+
 }

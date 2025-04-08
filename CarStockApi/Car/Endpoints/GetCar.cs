@@ -8,7 +8,7 @@ namespace CarStockApi.Endpoints;
 
 
 
-public class GetCarsEndpoint : EndpointWithoutRequest<List<CarRecord>>
+public class GetCarsEndpoint : EndpointWithoutRequest<List<CarRecordModel>>
 {
     private readonly ICarService _carService;
 

@@ -5,6 +5,6 @@ namespace CarStockApi.Auth.Interfaces;
 
 public interface IAuthService
 {
-    Task<LoginResponse> LoginAsync(LoginRequest request);
-    Task RegisterAsync(RegisterRequest request);
+    Task<LoginResponseModel> LoginAsync(LoginRequestModel requestModel);
+    Task RegisterAsync(RegisterRequestModel requestModel);
 }

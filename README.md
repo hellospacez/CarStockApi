@@ -30,19 +30,19 @@ This project has been tested on:
 
 ### Car Endpoints
 
-- `POST /cars` – Add a new car to the dealer’s inventory
+- `POST /car` – Add a new car to the dealer’s inventory
 Request body: { "make": "Audi", "model": "A4", "year": 2018, "stock": 10 }
 Responses: 200 OK, 400 Bad Request, 401 Unauthorized
 
-- `DELETE /cars/{id}` – Delete a specific car by ID from the dealer’s inventory
+- `DELETE /car/{id}` – Delete a specific car by ID from the dealer’s inventory
 Path parameter: id (int)
 Responses: 200 OK, 404 Not Found, 401 Unauthorized
 
-- `GET /cars` – List all cars owned by the dealer, or filter by make and model
+- `GET /car` – List all cars owned by the dealer, or filter by make and model
 Query parameters (optional): make, model
 Responses: 200 OK, 401 Unauthorized
 
-- `PUT /cars/{id}` – Update the stock level of a specific car
+- `PUT /car/{id}` – Update the stock level of a specific car
 Path parameter: id (int)
 Request body: { "stock": 8 }
 Responses: 200 OK, 404 Not Found, 401 Unauthorized

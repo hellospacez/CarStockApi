@@ -1,9 +1,7 @@
-using CarStockApi.Data;
 using CarStockApi.Endpoints.Car.Interfaces;
 using CarStockApi.Models.Request.Car;
 using CarStockApi.Models.Response.Car;
-using Dapper;
-using Microsoft.Data.Sqlite;
+
 
 namespace CarStockApi.Endpoints.Car.Services;
 
@@ -21,14 +19,9 @@ public class CarService : ICarService
         await _carRepository.AddCarAsync(dealerId, requestModel);
     }
 
-    public async Task<List<CarRecordModel>> GetCarsAsync(int dealerId)
+    public async Task<List<CarRecordModel>> GetCarsAsync(int dealerId, SearchCarsRequestModel filter)
     {
-        return await _carRepository.GetCarsAsync(dealerId);
-    }
-
-    public async Task<List<CarRecordModel>> SearchCarsAsync(int dealerId, string? make, string? model)
-    {
-        return await _carRepository.SearchCarsAsync(dealerId, make, model);
+        return await _carRepository.GetCarsAsync(dealerId, filter);
     }
 
     public async Task<bool> UpdateCarStockAsync(int dealerId, int carId, int stock)

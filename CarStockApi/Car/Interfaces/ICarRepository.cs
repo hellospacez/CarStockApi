@@ -6,8 +6,7 @@ namespace CarStockApi.Endpoints.Car.Interfaces;
 public interface ICarRepository
 {
     Task AddCarAsync(int dealerId, AddCarRequestModel requestModel);
-    Task<List<CarRecordModel>> GetCarsAsync(int dealerId);
-    Task<List<CarRecordModel>> SearchCarsAsync(int dealerId, string? make, string? model);
+    Task<List<CarRecordModel>> GetCarsAsync(int dealerId, SearchCarsRequestModel filter);
     Task<bool> UpdateCarStockAsync(int dealerId, int carId, int stock);
     Task<bool> DeleteCarAsync(int dealerId, int carId);
 }

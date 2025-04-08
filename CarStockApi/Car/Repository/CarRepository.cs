@@ -23,28 +23,28 @@ namespace CarStockApi.Endpoints.Car.Repository;
                 new { requestModel.Make, requestModel.Model, requestModel.Year, requestModel.Stock, DealerId = dealerId });
         }
 
-        public async Task<List<CarRecordModel>> GetCarsAsync(int dealerId)
+        public async Task<List<CarRecordModel>> GetCarsAsync(int dealerId, SearchCarsRequestModel filter)
         {
             using var conn = _connectionFactory.CreateConnection();
-            var cars = await conn.QueryAsync<CarRecordModel>(
-                "SELECT Id, Make, Model, Year, Stock FROM Cars WHERE DealerId = @DealerId", 
-                new { DealerId = dealerId });
+
+            var sql = """
+                          SELECT Id, Make, Model, Year, Stock
+                          FROM Cars
+                          WHERE DealerId = @DealerId
+                            AND (@Make IS NULL OR Make LIKE '%' || @Make || '%')
+                            AND (@Model IS NULL OR Model LIKE '%' || @Model || '%')
+                      """;
+
+            var cars = await conn.QueryAsync<CarRecordModel>(sql, new
+            {
+                DealerId = dealerId,
+                Make = filter.Make,
+                Model = filter.Model
+            });
+
             return cars.ToList();
         }
 
-        public async Task<List<CarRecordModel>> SearchCarsAsync(int dealerId, string? make, string? model)
-        {
-            using var conn = _connectionFactory.CreateConnection();
-            var sql = """
-                      SELECT Id, Make, Model, Year, Stock
-                      FROM Cars
-                      WHERE DealerId = @DealerId
-                        AND (@Make IS NULL OR Make LIKE '%' || @Make || '%')
-                        AND (@Model IS NULL OR Model LIKE '%' || @Model || '%')
-                    """;
-            var cars = await conn.QueryAsync<CarRecordModel>(sql, new { DealerId = dealerId, Make = make, Model = model });
-            return cars.ToList();
-        }
 
         public async Task<bool> UpdateCarStockAsync(int dealerId, int carId, int stock)
         {

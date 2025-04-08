@@ -42,6 +42,10 @@ app.UseAuthorization();
 app.UseFastEndpoints()
     .UseSwaggerGen();
 
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", context =>
+{
+    context.Response.Redirect("/swagger");
+    return Task.CompletedTask;
+});
 
 app.Run();

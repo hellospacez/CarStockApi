@@ -10,14 +10,12 @@
       <PackageReference Include="Dapper" Version="2.1.66" />
       <PackageReference Include="Fastendpoints" Version="5.35.0" />
       <PackageReference Include="FastEndpoints.Security" Version="5.35.0" />
+      <PackageReference Include="FastEndpoints.Swagger" Version="5.35.0" />
       <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.3" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Auth\Dtos\" />
-      <Folder Include="Data\DbContext\" />
-      <Folder Include="Data\Entities\" />
-      <Folder Include="Data\Migration\" />
     </ItemGroup>
 
 </Project>

@@ -7,6 +7,7 @@ using CarStockApi.Endpoints.Car.Repository;
 using CarStockApi.Endpoints.Car.Services;
 using FastEndpoints;
 using FastEndpoints.Security;
+using FastEndpoints.Swagger;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,7 +25,8 @@ builder.Services.AddAuthenticationJwtBearer(options =>
     options.SigningKey = "super-secret-key-super-secret-key";
 });
 builder.Services.AddAuthorization();
-builder.Services.AddFastEndpoints();
+builder.Services.AddFastEndpoints()
+        .SwaggerDocument();;
 
 
 
@@ -37,7 +39,8 @@ database.Init();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseFastEndpoints();
+app.UseFastEndpoints()
+    .UseSwaggerGen();
 
 app.MapGet("/", () => "Hello World!");
 

@@ -52,6 +52,8 @@
 2. Run the project using `dotnet run`
 3. Access the endpoints via `http://localhost:5100`
 
+
+
 ## Example Usage:
 
 ### Login:
@@ -63,3 +65,8 @@ Send a `POST` request to `/login` with the following body:
   "username": "dealer1",
   "password": "password123"
 }
+```
+
+
+## Swagger:
+![swagger-screenshot.png](swagger-screenshot.png)

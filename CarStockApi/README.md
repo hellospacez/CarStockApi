@@ -4,7 +4,7 @@
 
 1. Clone the repo
 2. Run the following commands:
-    - Make sure you have .NET 6.0 or above installed.
+    - Make sure you have .NET 8.0.
     - Run `dotnet build` to build the project.
     - Run `dotnet run` to start the application.
 3. SQLite file `carstock.db` will be created automatically if missing.

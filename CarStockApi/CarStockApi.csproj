@@ -15,6 +15,9 @@
 
     <ItemGroup>
       <Folder Include="Auth\Dtos\" />
+      <Folder Include="Data\DbContext\" />
+      <Folder Include="Data\Entities\" />
+      <Folder Include="Data\Migration\" />
     </ItemGroup>
 
 </Project>

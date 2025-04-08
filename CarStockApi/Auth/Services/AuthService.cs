@@ -9,34 +9,34 @@ using Microsoft.Data.Sqlite;
 
 namespace CarStockApi.Auth.Services;
 
+
 public class AuthService : IAuthService
 {
+    private readonly IAuthRepository _authRepository;
+
+    public AuthService(IAuthRepository authRepository)
+    {
+        _authRepository = authRepository;
+    }
+
     public async Task RegisterAsync(RegisterRequestModel req)
     {
-        using var conn = new SqliteConnection(Database.ConnectionString);
-
-        try
-        {
-            await conn.ExecuteAsync(
-                "INSERT INTO Dealers (Username, PasswordHash) VALUES (@Username, @PasswordHash)",
-                new { req.Username, PasswordHash = req.Password }); // Not good, Haha
-        }
-        catch (SqliteException ex) when (ex.SqliteErrorCode == 19)
+        var existingDealer = await _authRepository.GetDealerByUsernameAsync(req.Username);
+        if (existingDealer != null)
         {
             throw new Exception("Username already exists");
         }
+
+        await _authRepository.AddDealerAsync(req.Username, req.Password);
     }
 
     public async Task<LoginResponseModel> LoginAsync(LoginRequestModel req)
     {
-        using var conn = new SqliteConnection(Database.ConnectionString);
-
-        var dealer = await conn.QuerySingleOrDefaultAsync<dynamic>(
-            "SELECT * FROM Dealers WHERE Username = @Username",
-            new { req.Username });
-
-        if (dealer is null || (string)dealer.PasswordHash != req.Password)
+        var dealer = await _authRepository.GetDealerByUsernameAsync(req.Username);
+        if (dealer == null || dealer.PasswordHash != req.Password)
+        {
             throw new Exception("Invalid username or password");
+        }
 
         var claims = new[]
         {

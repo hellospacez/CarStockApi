@@ -50,7 +50,7 @@
 
 1. Clone the repository
 2. Run the project using `dotnet run`
-3. Access the endpoints via `http://localhost:5000`
+3. Access the endpoints via `http://localhost:5100`
 
 ## Example Usage:
 

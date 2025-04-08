@@ -52,9 +52,9 @@ If the input fails validation, the API returns:
     "Year": ["Year must be between 1900 and 2100."],
     "Stock": ["Stock must be a positive number."]
   }
-}
+} 
 
-
+```
 
 - `DELETE /car/{id}` – Delete a specific car by ID from the dealer’s inventory
 Path parameter: id (int)

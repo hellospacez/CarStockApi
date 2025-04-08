@@ -9,10 +9,11 @@ Make sure you have the following installed **before running or building the proj
 - [.NET 8.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) ✅ (required to build)
 - [.NET 8.0 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/8.0/runtime) ✅ (required to run)
 
+
   
 ✅ This project has been tested on:
-- Windows 11 + IIS Express + .NET 8 SDK
-- Ubuntu 22.04 + Nginx + .NET 8 Runtime
+- Windows 11 + IIS Express + .NET 8
+- Ubuntu 22.04 + Nginx + .NET 8
 
 
 

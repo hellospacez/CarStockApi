@@ -36,11 +36,12 @@ This API follows standard **RESTful** principles
 Request body: { "make": "Audi", "model": "A4", "year": 2018, "stock": 10 }
 Responses: 200 OK, 400 Bad Request, 401 Unauthorized
 
-Validation Rules
-	•	make: required, 1–50 characters
-	•	model: required, 1–50 characters
-	•	year: must be between 1900 and 2100
-	•	stock: must be between 0 and 9999
+#### Validation Rules
+
+- **make**: Required, 1–50 characters.
+- **model**: Required, 1–50 characters.
+- **year**: Must be between 1900 and 2100.
+- **stock**: Must be between 0 and 9999.
 
 If the input fails validation, the API returns:
 
@@ -52,17 +53,11 @@ If the input fails validation, the API returns:
     "Year": ["Year must be between 1900 and 2100."],
     "Stock": ["Stock must be a positive number."]
   }
-} 
-
-```
+} ```
 
 - `DELETE /car/{id}` – Delete a specific car by ID from the dealer’s inventory
 Path parameter: id (int)
 Responses: 200 OK, 404 Not Found, 401 Unauthorized
-
-
-
-
 
 - `GET /car` – List all cars owned by the dealer, or filter by make and model
 Query parameters (optional): make, model

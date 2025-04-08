@@ -69,4 +69,4 @@ Send a `POST` request to `/login` with the following body:
 
 
 ## Swagger:
-![/CarStockApi/swagger-screenshot.png](swagger-screenshot.png)
+![swagger-screenshot.png](CarStockApi/swagger-screenshot.png)

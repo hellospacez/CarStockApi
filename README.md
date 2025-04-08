@@ -30,6 +30,8 @@ This project has been tested on:
 
 ### Car Endpoints
 
+This API follows standard **RESTful** principles
+
 - `POST /car` – Add a new car to the dealer’s inventory
 Request body: { "make": "Audi", "model": "A4", "year": 2018, "stock": 10 }
 Responses: 200 OK, 400 Bad Request, 401 Unauthorized

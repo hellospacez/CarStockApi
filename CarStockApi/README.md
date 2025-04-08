@@ -11,9 +11,9 @@ Make sure you have the following installed **before running or building the proj
 
 
   
-✅ This project has been tested on:
-- Windows 11 + IIS Express + .NET 8
-- Ubuntu 22.04 + Nginx + .NET 8
+This project has been tested on:
+- Windows 11 + IIS Express + .NET 8 ✅
+- Ubuntu 22.04 + Nginx + .NET 8 ✅
 
 
 

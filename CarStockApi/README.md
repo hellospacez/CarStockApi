@@ -30,9 +30,31 @@ This project has been tested on:
 
 ### Car Endpoints
 
+This API follows standard **RESTful** principles
+
 - `POST /car` – Add a new car to the dealer’s inventory
 Request body: { "make": "Audi", "model": "A4", "year": 2018, "stock": 10 }
 Responses: 200 OK, 400 Bad Request, 401 Unauthorized
+
+#### Validation Rules
+
+- **make**: Required, 1–50 characters.
+- **model**: Required, 1–50 characters.
+- **year**: Must be between 1900 and 2100.
+- **stock**: Must be between 0 and 9999.
+
+If the input fails validation, the API returns:
+
+```json
+{
+  "errors": {
+    "Make": ["Make is required."],
+    "Model": ["Model cannot be longer than 50 characters."],
+    "Year": ["Year must be between 1900 and 2100."],
+    "Stock": ["Stock must be a positive number."]
+  }
+}
+```
 
 - `DELETE /car/{id}` – Delete a specific car by ID from the dealer’s inventory
 Path parameter: id (int)

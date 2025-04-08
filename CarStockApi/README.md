@@ -14,6 +14,7 @@
 ### Car Endpoints
 
 - `POST /cars` – Add a new car
+- `DELETE /cars/{id}` – Delete a car
 - `GET /cars` – List all cars
 - `PUT /cars/{id}/stock` – Update car stock level
 - `GET /cars/search?make=xxx&model=yyy` – Search cars by make and model

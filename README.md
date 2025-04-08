@@ -1,6 +1,6 @@
 # CarStockApi#
 
-### Test URL: [https://car.9it.com.au/](https://car.9it.com.au/swagger)
+### Test URL: [htt://car.9it.com.au/](http://car.9it.com.au/swagger)
 
 
 

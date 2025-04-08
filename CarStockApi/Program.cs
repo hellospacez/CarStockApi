@@ -26,7 +26,7 @@ builder.Services.AddAuthenticationJwtBearer(options =>
 });
 builder.Services.AddAuthorization();
 builder.Services.AddFastEndpoints()
-        .SwaggerDocument();;
+        .SwaggerDocument();
 
 
 

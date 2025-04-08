@@ -2,6 +2,7 @@ using CarStockApi.Endpoints.Car.Interfaces;
 using CarStockApi.Models.Request.Car;
 using CarStockApi.Models.Response.Car;
 using FastEndpoints;
+using FluentValidation.Results;
 
 namespace CarStockApi.Endpoints;
 
@@ -19,11 +20,13 @@ public class CarCreate : Endpoint<AddCarRequestModel>
     public override void Configure()
     {
         Post("/car");
+        Validator<AddCarRequestValidator>();
         Claims("DealerId");
     }
 
     public override async Task HandleAsync(AddCarRequestModel req, CancellationToken ct)
     {
+ 
         var dealerId = int.Parse(User.FindFirst("DealerId")!.Value);
         await _carService.AddCarAsync(dealerId, req);
         await SendOkAsync(ct);
@@ -46,6 +49,7 @@ public class CarDelete : Endpoint<DeleteCarRequestModel>
     public override void Configure()
     {
         Delete("/car/{id}");
+        Validator<DeleteCarRequestValidator>();
         Claims("DealerId");
     }
 
@@ -76,6 +80,7 @@ public class CarsGet : Endpoint<SearchCarsRequestModel, List<CarRecordModel>>
     public override void Configure()
     {
         Get("/car");
+        Validator<SearchCarsRequestValidator>();
         Claims("DealerId");
         Summary(s =>
         {
@@ -107,6 +112,7 @@ public class CarPut : Endpoint<UpdateStockRequestModel>
     public override void Configure()
     {
         Put("/car/{id}");
+        Validator<UpdateStockRequestValidator>();
         Claims("DealerId");
     }
 

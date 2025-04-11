@@ -28,11 +28,20 @@ builder.Services.AddAuthorization();
 builder.Services.AddFastEndpoints()
         .SwaggerDocument();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()  
+            .AllowAnyHeader()  
+            .AllowAnyMethod();  
+    });
+});
 
 
 
 var app = builder.Build();
-
+app.UseCors("AllowAll");
 var database = app.Services.GetRequiredService<Database>();
 database.Init();
 

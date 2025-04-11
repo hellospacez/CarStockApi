@@ -1,12 +1,10 @@
 # CarStockApi
 
 
-### API Test URL
-[http://car.9it.com.au/](http://car.9it.com.au/swagger)
 
-### Frontend Test URL
-[https://car-api-front.vercel.app/](https://car-api-front.vercel.app/)
+### API Test URL: [http://car.9it.com.au/](http://car.9it.com.au/swagger)
 
+### Frontend Test URL: [https://car-api-front.vercel.app/](https://car-api-front.vercel.app/)
 
 
 

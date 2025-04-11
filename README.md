@@ -22,6 +22,8 @@ This project has been tested on:
 - Windows 11 + IIS Express + .NET 8 ✅
 - Ubuntu 22.04 + Nginx + .NET 8 ✅
 
+- Unit tests are written using [xUnit]
+
 
 
 ## Setup Instructions

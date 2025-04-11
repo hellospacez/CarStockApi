@@ -4,7 +4,7 @@
 
 ### API Test URL: [https://carstockapi.onrender.com/](https://carstockapi.onrender.com/swagger)
 
-### Frontend Test URL: [https://car-api-front.vercel.app/](https://car-api-front.vercel.app/)
+### Svelte Frontend Test URL: [https://car-api-front.vercel.app/](https://car-api-front.vercel.app/)
 
 
 

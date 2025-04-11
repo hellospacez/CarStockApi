@@ -1,9 +1,12 @@
 # CarStockApi
 
 
+
 ### API Test URL: [https://carstockapi.onrender.com/](https://carstockapi.onrender.com/swagger)
 
 ### Svelte Frontend Test URL: [https://car-api-front.vercel.app/](https://car-api-front.vercel.app/)
+
+### Svelte Frontend GitHub: [https://github.com/hellospacez/CarApiFront](https://github.com/hellospacez/CarApiFront)
 
 
 
@@ -19,6 +22,7 @@ This project has been tested on:
 - Windows 11 + IIS Express + .NET 8 ✅
 - Ubuntu 22.04 + Nginx + .NET 8 ✅
 
+- Unit tests are written using [xUnit]
 
 
 ## Setup Instructions

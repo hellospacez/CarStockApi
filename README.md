@@ -4,6 +4,8 @@
 
 ### API Test URL: [https://carstockapi.onrender.com/](https://carstockapi.onrender.com/swagger)
 
+This app is hosted on Render's free tier. First load may take 30–60 seconds due to cold start.
+
 ### Svelte Frontend Test URL: [https://car-api-front.vercel.app/](https://car-api-front.vercel.app/)
 
 ### Svelte Frontend GitHub: [https://github.com/hellospacez/CarApiFront](https://github.com/hellospacez/CarApiFront)
